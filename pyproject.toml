@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "work"
+version = "0.1.0"
+description = ""
+authors = ["Baxtiyor1990 <156651092+Baxtiyor1990@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
