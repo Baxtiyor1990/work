@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from api.hh_api import HeadHunterAPI
+from src.api.hh_api import HeadHunterAPI
 
 class TestHeadHunterAPI(unittest.TestCase):
     @patch('requests.get')

@@ -1,6 +1,6 @@
 import unittest
-from models.vacancy import Vacancy
-from utils.helpers import filter_vacancies, get_vacancies_by_salary, sort_vacancies, get_top_vacancies
+from src.models.vacancy import Vacancy
+from src.utils.helpers import filter_vacancies, get_vacancies_by_salary, sort_vacancies, get_top_vacancies, get_salary
 
 class TestHelpersFunctions(unittest.TestCase):
     def setUp(self):
@@ -27,8 +27,7 @@ class TestHelpersFunctions(unittest.TestCase):
     def test_sort_vacancies(self):
         sorted_vacancies = sort_vacancies(self.vacancies_list)
 
-        self.assertEqual(sorted_vacancies, [self.vacancies_list[1], self.vacancies_list[0], self
-        self.vacancies_list[2]])
+        self.assertEqual(sorted_vacancies, [self.vacancies_list[1], self.vacancies_list[0], self.vacancies_list[2]])
 
     def test_get_top_vacancies(self):
         top_vacancies = get_top_vacancies(self.vacancies_list, 2)

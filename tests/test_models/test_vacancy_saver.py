@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
-from models.vacancy import JSONSaver, Vacancy
-
+from src.models.vacancy_saver import JSONSaver
+from src.models.vacancy import Vacancy
 class TestJSONSaverClass(unittest.TestCase):
     @patch('builtins.open', create=True)
     def test_add_vacancy(self, mock_open):

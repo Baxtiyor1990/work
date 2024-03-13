@@ -8,7 +8,7 @@ class Vacancy:
         self.description = description
 
         # Валидация данных
-        if not self.salary:
+        if not isinstance(self.salary, (str, int, float)):
             self.salary = "Зарплата не указана"
 
     def __str__(self):
@@ -33,7 +33,7 @@ class JSONSaver(AbstractVacancySaver):
 
     def add_vacancy(self, vacancy):
         with open(self.file_path, 'a') as file:
-            json.dump(vars(vacancy), file)
+            json.dump(vacancy.__dict__, file)
             file.write('\n')
 
     def delete_vacancy(self, vacancy):

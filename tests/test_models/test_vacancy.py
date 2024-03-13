@@ -1,5 +1,5 @@
 import unittest
-from models.vacancy import Vacancy
+from src.models.vacancy import Vacancy
 
 class TestVacancyClass(unittest.TestCase):
     def test_vacancy_creation(self):
