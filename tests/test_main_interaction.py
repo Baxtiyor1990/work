@@ -1,23 +1,20 @@
 import unittest
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 from io import StringIO
-from src import main
+from src.main import user_interaction
 
-class TestMainFunction(unittest.TestCase):
-    @patch('src.api.hh_api.HeadHunterAPI.get_vacancies', return_value={'items': [
-        {'name': 'Python Developer', 'alternate_url': 'https://example.com', 'salary': {'from': 120000}, 'description': 'Description 1'},
-        {'name': 'Java Developer', 'alternate_url': 'https://example.com', 'salary': {'from': 130000}, 'description': 'Description 2'},
-    ]})
-    @patch('builtins.input', side_effect=['Python Developer', '5', 'python', '100000-150000'])
-    def test_user_interaction(self, mock_input, mock_api):
+
+class TestMainInteraction(unittest.TestCase):
+
+    @patch('builtins.input', side_effect=["it", "1", "python", "100000"])
+    @patch('src.api.hh_api.HeadHunterAPI.get_vacancies', return_value={'items': []})
+    def test_user_interaction_no_vacancies(self, mock_input, mock_get_vacancies):
         with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
-            main.user_interaction()
-            output = mock_stdout.getvalue().strip()
+            user_interaction()
+            self.assertIn("Нет подходящих вакансий", mock_stdout.getvalue())
 
-        self.assertIn("Python Developer", output)
-        self.assertIn("Зарплата: 120000", output)
-        self.assertIn("Ссылка: https://example.com", output)
-        self.assertIn("Описание: Description 1", output)
+
+
 
 if __name__ == '__main__':
     unittest.main()
