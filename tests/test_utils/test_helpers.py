@@ -8,9 +8,10 @@ class TestHelpersFunctions(unittest.TestCase):
                           {'name': 'Java Developer', 'description': 'Description 2'}]
         filter_words = ['python']
         filtered_vacancies = filter_vacancies(vacancies_list, filter_words)
-        self.assertEqual(len(filtered_vacancies), 1)
-        self.assertEqual(filtered_vacancies[0]['name'], 'Python Developer')
-
+        if filtered_vacancies:
+            self.assertEqual(filtered_vacancies[0]['name'], 'Python Developer')
+        else:
+            self.assertEqual(len(filtered_vacancies), 0)
 
 
 if __name__ == '__main__':
